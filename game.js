@@ -7,6 +7,8 @@ $(document).one("keydown", function () {
     nextLevel();
 });
 
+// Função que irá resetar cada vez que o jogador acertar a resposta //
+
 function nextLevel() {
     level++;
     $("#level-title").text("Level " + level);
@@ -20,6 +22,8 @@ function nextLevel() {
     gamePattern.push(randomChosenColor);
     userClickedPattern = [];
 };
+
+// Função de evento do click. Caso o jogador acerte a resposta, a função de cima executará novamente. Caso contrário, será fim de jogo e ele precisará resetar a página!//
 
 $(".btn").on("click", function(event) {
     var userChosenColour = $(event.target).attr("id");
@@ -37,11 +41,14 @@ $(".btn").on("click", function(event) {
     } 
 });
 
+// Função em que o áudio é tocado com o click do jogador em qualquer botão //
+
 function playSound(name) {
     var audioClick = new Audio('./sounds/' + name + '.mp3');
-    audioClick.loop = false;
     audioClick.play();
 };
+
+// Função que anima o botão ao ser clicado //
 
 function animatePress(currentColour) {
    var animatedButton = $("#" + currentColour).addClass("pressed");
